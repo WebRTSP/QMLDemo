@@ -11,6 +11,7 @@ Window {
         id: connection
         serverUrl: "wss://ipcam.stream:5555/"
         authToken: "token"
+        stunServerUrl: "stun://global.stun.twilio.com"
     }
     GstGLQt6VideoItem {
         id: video
