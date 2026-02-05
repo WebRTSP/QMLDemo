@@ -4,11 +4,11 @@ project(QMLDemo VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(HTTP_SUPPORT OFF)
-set(WS_SERVER_SUPPORT OFF)
-set(WS_CLIENT_SUPPORT OFF)
-set(ONVIF_SUPPORT OFF)
-set(QML_SUPPORT ON)
+set(HTTP_SUPPORT OFF CACHE BOOL "HTTP server is not used" FORCE)
+set(WS_SERVER_SUPPORT  OFF CACHE BOOL "libwebsocket based server is not used" FORCE)
+set(WS_CLIENT_SUPPORT OFF CACHE BOOL "libwebsocket based client is not used" FORCE)
+set(ONVIF_SUPPORT OFF CACHE BOOL "ONVIF not used" FORCE)
+set(QML_SUPPORT ON CACHE BOOL "QML is used" FORCE)
 add_subdirectory(WebRTSP)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
