@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
         gst_object_unref(plugin);
     } else {
         qCritical() << "Something went wrong with Qt6 Qml GStreamer plugin load";
+        return -1;
     }
 
     QGuiApplication app(argc, argv);
