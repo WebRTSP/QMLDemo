@@ -4,17 +4,14 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 
+#include "WebRTSP/Qt/QML/QmlLibGst.h"
+
 
 Q_IMPORT_QML_PLUGIN(org_webrtsp_clientPlugin)
 
 int main(int argc, char *argv[])
 {
-    GError* error = nullptr;
-    if(!gst_init_check(nullptr, nullptr, &error)) {
-        qCritical() << "Something went wrong with GStreamer initialization:" << error->message;
-        g_clear_error(&error);
-        return -1;
-    }
+    QmlLibGst libGst;
 
     // trick to load plugin and register required QML elements
     if(GstPlugin* plugin = gst_plugin_load_by_name("qml6")) {

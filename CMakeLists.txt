@@ -16,10 +16,22 @@ find_package(Qt6 REQUIRED COMPONENTS Core)
 
 pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 
+if(ANDROID)
+    include(FetchContent)
+    FetchContent_Declare(
+        android_openssl
+        DOWNLOAD_EXTRACT_TIMESTAMP true
+        URL https://github.com/KDAB/android_openssl/archive/refs/heads/master.zip
+    )
+    FetchContent_MakeAvailable(android_openssl)
+    include(${android_openssl_SOURCE_DIR}/android_openssl.cmake)
+endif()
+
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(${PROJECT_NAME}
     main.cpp
+    README.md
 )
 
 qt_add_qml_module(${PROJECT_NAME}
@@ -50,6 +62,22 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE
         Qt6::Core
         Qt6::Quick
-        ${GSTREAMER_LDFLAGS}
         WebRTSPClientPlugin
+        QmlClient
 )
+
+if(ANDROID)
+    add_android_openssl_libraries(${PROJECT_NAME})
+endif()
+
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME}
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
+#get_cmake_property(_variableNames VARIABLES)
+#foreach (_variableName ${_variableNames})
+#    message(STATUS "${_variableName}=${${_variableName}}")
+#endforeach()
