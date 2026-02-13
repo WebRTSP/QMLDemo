@@ -14,8 +14,6 @@ add_subdirectory(WebRTSP)
 find_package(Qt6 REQUIRED COMPONENTS Quick)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 
-pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
-
 if(ANDROID)
     include(FetchContent)
     FetchContent_Declare(
