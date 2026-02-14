@@ -24,10 +24,12 @@ Window {
         target: rootInfo
         function onListChanged(list) {
             console.log("list changed:", list);
+            if(player) {
+                player.destroy();
+                player = null;
+            }
             if(list.length !== 0) {
                 player = connection.player(list[0].uri, video);
-            } else {
-                player = null;
             }
         }
     }
