@@ -30,6 +30,9 @@ Window {
             }
             if(list.length !== 0) {
                 player = connection.player(list[0].uri, video);
+                player.onCanPlay.connect(() => {
+                    console.log("canPlay");
+                });
             }
         }
     }
