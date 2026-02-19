@@ -1,3 +1,19 @@
+## Build on Ubuntu 25.10
+1. install dependancies:
+```
+sudo apt install build-essential git cmake pkgconf \
+    libspdlog-dev libspdlog-dev libgio-2.0-dev \
+    libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev \
+    qt6-declarative-dev qt6-websockets-dev gstreamer1.0-qt6 \
+    libnice-dev \
+    gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-nice gstreamer1.0-libav \
+    qtcreator qt6-base-dev
+```
+2. `git clone https://github.com/WebRTSP/QMLDemo.git --recursive`
+3. open `CMakeLists.txt` from project root in Qt Creator
+4. select `Desktop` as build kit
+5. build application and run
+
 ## Build on Windows 11 with Qt 6.10.2
 
 ### Build GStreamer 1.28 with Qt 6 support
