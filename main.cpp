@@ -2,7 +2,8 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QtQml>
+#include <QQmlEngineExtensionPlugin>
+#include <QQuickWindow>
 
 #include "WebRTSP/Qt/QML/QmlLibGst.h"
 
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
 {
     QmlLibGst libGst;
 
+    QGuiApplication app(argc, argv);
+
     // trick to load plugin and register required QML elements
     if(GstPlugin* plugin = gst_plugin_load_by_name("qml6")) {
         gst_object_unref(plugin);
@@ -21,8 +24,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    QGuiApplication app(argc, argv);
-
+    QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
     QQmlApplicationEngine engine;
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreationFailed,
