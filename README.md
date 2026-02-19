@@ -40,7 +40,7 @@ start gstreamer-1.0-msvc-x86_64-1.28.0.1.exe
 ### Build QMLDemo
 1. run `git clone https://github.com/WebRTSP/QMLDemo.git --recursive`
 2. open `CMakeLists.txt` from project root in Qt Creator
-3. select `Desktop Qt 6.10.2 MSVC2022 64bit` as build kit
+3. select `Desktop Qt 6.10.2 MSVC2022 64bit` as build kit and `Release` or `Release with Debug information` build configuration
 4. build application and run
 
 ## Build on Ubuntu 25.10 for Android with Qt 6.10.2
