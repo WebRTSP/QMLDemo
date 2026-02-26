@@ -24,16 +24,38 @@ Window {
         target: rootInfo
         function onListChanged(list) {
             console.log("list changed:", list);
-            if(player) {
-                player.destroy();
-                player = null;
+            playNext();
+        }
+    }
+
+    property int activeItem: -1
+    function playNext() {
+        if(player) {
+            player.destroy();
+            player = null;
+        }
+
+        const list = rootInfo.list;
+
+        timer.running = list.length > 0;
+
+        if(list.length !== 0) {
+            ++activeItem;
+            if(activeItem >= list.length) {
+                activeItem = 0;
             }
-            if(list.length !== 0) {
-                player = connection.player(list[0].uri, video);
-                player.onCanPlay.connect(() => {
-                    console.log("canPlay");
-                });
-            }
+
+            player = connection.player(list[activeItem].uri, video);
+        }
+    }
+
+    Timer {
+        id: timer
+        interval: 10000;
+        running: false;
+        repeat: true
+        onTriggered: {
+            playNext();
         }
     }
 
