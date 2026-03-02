@@ -1,5 +1,6 @@
 #include <gst/gst.h>
 
+#include <QLoggingCategory>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlEngineExtensionPlugin>
@@ -15,6 +16,8 @@ int main(int argc, char *argv[])
     QmlLibGst libGst;
 
     QGuiApplication app(argc, argv);
+
+    QLoggingCategory::setFilterRules("*webrtsp.qml.client.debug=false");
 
     // trick to load plugin and register required QML elements
     if(GstPlugin* plugin = gst_plugin_load_by_name("qml6")) {
