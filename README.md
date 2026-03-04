@@ -50,7 +50,7 @@ sudo apt install build-essential git cmake pkgconf \
 ## Build on Ubuntu 25.10 for Android with Qt 6.10.2
 
 ### Build patched GStreamer 1.28 with fixed Qt 6 support
-1. run `sudo apt install build-essential git cmake openjdk-17-jdk python3.13-venv`
+1. run `sudo apt install build-essential git git-lfs cmake openjdk-17-jdk python3.13-venv`
 2. install Qt 6.10.2 for Android with `Qt Online Installer` to `$HOME/Qt`  
     _Note: Ensure `Qt Shader Tools` is selected under the `Additional Libraries` section_
 3. open QtCreator and configure build environment for Android (Edit > Preferences... > SDKs > Android)
