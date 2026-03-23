@@ -55,7 +55,7 @@ sudo apt install build-essential git cmake pkgconf \
     _Note: Ensure `Qt Shader Tools` is selected under the `Additional Libraries` section_
 3. open QtCreator and configure build environment for Android (Edit > Preferences... > SDKs > Android)
 4. run `git clone https://github.com/RSATom/cerbero.git && cd cerbero && git checkout 1.28_patched`
-5. run `export QMAKE6_android_arm64=~/Qt/6.10.2/android_arm64_v8a/bin/qmake && export QMAKE6_android_x86_64=~/Qt/6.10.2/android_x86_64/bin/qmake`
+5. run `export QT6_PREFIX=~/Qt/6.10.2`
 6. run `./cerbero-uninstalled -c config/cross-android-universal.cbc bootstrap`
 7. run`./cerbero-uninstalled -c patched_gstreamer.cbc -c config/cross-android-universal.cbc -v qt6 package gstreamer-1.0`
 8. extract `gstreamer-1.0-android-universal-1.28.1.1.tar.xz` to `$HOME`
